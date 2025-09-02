@@ -1,17 +1,18 @@
 # Maintainer: 3j14 <hello@3j14.de>
 
 pkgname=rbackupd
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='Bash helpers and systemd units for managing backups with restic'
 arch=('any')
 license=('BSD-3-Clause')
-depends=('bash' 'restic' 'libnotify')
+depends=('bash' 'restic')
+optdepends=('libnotify')
 makedepends=()
 source=(
     "https://github.com/3j14/rbackupd/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('228b772dc20bddea8270d15ea13463b16327d92aeca35b114bd53ffd37dcf1f3')
+sha256sums=('445d243a9455d2523539c48a0cb63729b5962ccd4af83a039688f71c2c1fa2cb')
 
 package() {
     install -Dm644 "${pkgname}-${pkgver}/systemd/rbackupd@.service" -t "${pkgdir}/usr/lib/systemd/user"

@@ -3,8 +3,8 @@ Description="Restic backup with specific environment"
 
 [Service]
 ExecStart=/usr/bin/rbackupd %i --quiet
-ExecStartPre=notify-send -u "low" -a "Restic" "Restic backup started" "Backup location: %i"
-ExecStopPost=/bin/sh -c 'notify-send -u "low" -a "Restic" "Restic backup finished" "Location: %i, status: $EXIT_STATUS"'
+ExecStartPre=/bin/sh -c '[ -n "$DBUS_SESSION_BUS_ADDRESS" ] && notify-send -u "low" -a "Restic" "Restic backup started" "Backup location: %i" || exit 0'
+ExecStopPost=/bin/sh -c '[ -n "$DBUS_SESSION_BUS_ADDRESS" ] && notify-send -u "low" -a "Restic" "Restic backup finished" "Location: %i, status: $EXIT_STATUS" || exit 0'
 StandardError=journal
 StandardOutput=journal
 StandardInput=null

@@ -3,8 +3,8 @@ Description="Check restic backups"
 
 [Service]
 ExecStart=/usr/bin/rcheckd %i
-ExecStartPre=notify-send -u "low" -a "Restic" "Checking restic backups" "Backup location: %i"
-ExecStopPost=/bin/sh -c 'notify-send -u "low" -a "Restic" "Finished checking restic backups" "Location: %i, status: $EXIT_STATUS"'
+ExecStartPre=/bin/sh -c '[ -n "$DBUS_SESSION_BUS_ADDRESS" ] && notify-send -u "low" -a "Restic" "Checking restic backups" "Backup location: %i" || exit 0'
+ExecStopPost=/bin/sh -c '[ -n "$DBUS_SESSION_BUS_ADDRESS" ] && notify-send -u "low" -a "Restic" "Finished checking restic backups" "Location: %i, status: $EXIT_STATUS" || exit 0'
 StandardError=journal
 StandardOutput=journal
 StandardInput=null

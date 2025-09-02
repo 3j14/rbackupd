@@ -3,7 +3,7 @@ Description="Periodic restic backups"
 
 [Timer]
 OnBootSec=2m
-OnUnitInactiveSec=1d
+OnCalendar=daily
 Persistent=true
 
 [Install]

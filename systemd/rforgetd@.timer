@@ -2,7 +2,7 @@
 Description="Periodic clean up of old restic backups"
 
 [Timer]
-OnUnitInactiveSec=10d
+OnCalendar=weekly
 Persistent=true
 RandomizedDelaySec=3600
 

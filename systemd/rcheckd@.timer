@@ -2,7 +2,7 @@
 Description="Periodic check of restic backups"
 
 [Timer]
-OnUnitInactiveSec=30d
+OnCalendar=monthly
 Persistent=true
 RandomizedDelaySec=3600
 

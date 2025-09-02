@@ -2,7 +2,7 @@
 Description="Restic backup with specific environment"
 
 [Service]
-ExecStart=/home/jonas/.local/bin/backup.sh %i --quiet
+ExecStart=/usr/bin/rbackupd %i --quiet
 ExecStartPre=notify-send -u "low" -a "Restic" "Restic backup started" "Backup location: %i"
 ExecStopPost=/bin/sh -c 'notify-send -u "low" -a "Restic" "Restic backup finished" "Location: %i, status: $EXIT_STATUS"'
 StandardError=journal

@@ -2,7 +2,7 @@
 Description="Clean up old restic backups"
 
 [Service]
-ExecStart=/home/jonas/.local/bin/forget.sh %i
+ExecStart=/usr/bin/rforgetd %i
 ExecStartPre=notify-send -u "low" -a "Restic" "Cleaning up restic backups" "Backup location: %i"
 ExecStopPost=/bin/sh -c 'notify-send -u "low" -a "Restic" "Finished clenaing up restic backups" "Location: %i, status: $EXIT_STATUS"'
 StandardError=journal

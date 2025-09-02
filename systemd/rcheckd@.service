@@ -1,0 +1,14 @@
+[Unit]
+Description="Check restic backups"
+
+[Service]
+ExecStart=/home/jonas/.local/bin/check.sh %i
+ExecStartPre=notify-send -u "low" -a "Restic" "Checking restic backups" "Backup location: %i"
+ExecStopPost=/bin/sh -c 'notify-send -u "low" -a "Restic" "Finished checking restic backups" "Location: %i, status: $EXIT_STATUS"'
+StandardError=journal
+StandardOutput=journal
+StandardInput=null
+Restart=no
+
+[Install]
+WantedBy=default.target

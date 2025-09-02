@@ -1,0 +1,10 @@
+[Unit]
+Description="Periodic restic backups"
+
+[Timer]
+OnBootSec=2m
+OnUnitInactiveSec=1d
+Persistent=true
+
+[Install]
+WantedBy=default.target

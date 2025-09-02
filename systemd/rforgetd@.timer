@@ -1,0 +1,10 @@
+[Unit]
+Description="Periodic clean up of old restic backups"
+
+[Timer]
+OnUnitInactiveSec=10d
+Persistent=true
+RandomizedDelaySec=3600
+
+[Install]
+WantedBy=default.target
